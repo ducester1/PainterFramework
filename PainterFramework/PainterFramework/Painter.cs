@@ -16,9 +16,14 @@ namespace PainterFramework
     /// </summary>
     class Painter : GameEnvironment
     {
+        GameWorld gameWorld;
+        SpriteGameObject background;
 
         public Painter()
         {
+            gameWorld = new GameWorld();
+            gameWorld.Add(background);
+            gameStateManager.AddGameState("playingState", gameWorld);
             this.IsMouseVisible = true;
         }
 
@@ -27,6 +32,7 @@ namespace PainterFramework
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            gameStateManager.SwitchTo("playingState");
 
             // TODO: use this.Content to load your game content here
         }
