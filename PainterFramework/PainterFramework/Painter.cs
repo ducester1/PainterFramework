@@ -36,6 +36,8 @@ namespace PainterFramework
 
             screen = new Point(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
 
+            AssetManager.PlayMusic("snd_music");
+
             // TODO: use this.Content to load your game content here
         }
     }   
