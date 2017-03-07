@@ -14,6 +14,10 @@ namespace PainterFramework
         private ThreeColorGameObject cannonColor;
         private ThreeColorGameObject paintCan1, paintCan2, paintCan3;
         private Ball ball;
+        private int maxLives = 5;
+        public int lives{ get; set; }
+
+        public int score { get; set; }
 
         public GameWorld()
         {
@@ -40,6 +44,9 @@ namespace PainterFramework
             this.Add(paintCan3);
 
             this.Add(ball);
+
+            this.score = 0;
+            this.lives = maxLives;
         }
 
         public override void Update(GameTime gameTime)

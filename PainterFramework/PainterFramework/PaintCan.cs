@@ -30,6 +30,17 @@ namespace PainterFramework
                 Color = CalculateRandomColor();
             }
 
+            GameWorld gameWorld = GameWorld as GameWorld;
+            if (gameWorld.isOutsideWorld(GlobalPosition))
+            {
+                if (Color == targetColor)
+                {
+                    gameWorld.score += 10;
+                    Painter.AssetManager.PlaySound("snd_collect_points");
+                }
+                else gameWorld.lives -= 1;
+            }
+
             minVertVelocity += 0.001f;
             base.Update(gameTime);
         }
