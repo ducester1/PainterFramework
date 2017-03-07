@@ -42,6 +42,28 @@ namespace PainterFramework
             this.Add(ball);
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            if (ball.CollidesWith(paintCan1))
+            {
+                paintCan1.Color = ball.Color;
+                ball.Reset();
+            }
+            if (ball.CollidesWith(paintCan2))
+            {
+                paintCan2.Color = ball.Color;
+                ball.Reset();
+            }
+            if (ball.CollidesWith(paintCan3))
+            {
+                paintCan3.Color = ball.Color;
+                ball.Reset();
+            }
+
+
+            base.Update(gameTime);
+        }
+
         public override void HandleInput(InputHelper inputHelper)
         {
             base.HandleInput(inputHelper);
