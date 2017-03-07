@@ -19,6 +19,14 @@ namespace PainterFramework
             this.targetColor = targetColor;
 
             minVertVelocity = 30;
+            Reset();
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+            position = new Vector2(this.horizontalPosOff, -BoundingBox.Height);
+            velocity = Vector2.Zero;
         }
     }
 }
