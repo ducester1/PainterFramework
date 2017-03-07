@@ -49,5 +49,10 @@ namespace PainterFramework
             double adjacent = inputHelper.MousePosition.X - cannonBarrel.GlobalPosition.X;
             cannonBarrel.Angle = (float)Math.Atan2(opposite, adjacent);
         }
+
+        public bool isOutsideWorld(Vector2 position)
+        {
+            return (position.X < 0 || position.X > Painter.Screen.X || position.Y < 0 || position.Y > Painter.Screen.Y);
+        }
     }
 }

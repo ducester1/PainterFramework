@@ -31,6 +31,9 @@ namespace PainterFramework
                 velocity.X *= .99f;
                 velocity.Y += 6;
             }
+
+            GameWorld gameWorld = GameWorld as GameWorld;
+            if (gameWorld.isOutsideWorld(GlobalPosition)) Reset();
             base.Update(gameTime);
         }
     }
