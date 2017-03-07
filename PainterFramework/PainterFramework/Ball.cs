@@ -36,5 +36,20 @@ namespace PainterFramework
             if (gameWorld.isOutsideWorld(GlobalPosition)) Reset();
             base.Update(gameTime);
         }
+
+        public void Shoot(InputHelper inputHelper, ThreeColorGameObject cannonColor, RotatableSpriteGameObject cannonBarrel)
+        {
+            Shooting = true;
+            Color = cannonColor.Color;
+
+            velocity = (inputHelper.MousePosition - cannonColor.GlobalPosition);
+            visible = true;
+
+            float opp = (float)Math.Sin(cannonBarrel.Angle) * cannonBarrel.Width * 0.6f;
+            float adj = (float)Math.Cos(cannonBarrel.Angle) * cannonBarrel.Width * 0.6f;
+            position = cannonColor.Position + new Vector2(adj, opp) + new Vector2(3, 3);
+
+            Painter.AssetManager.PlaySound("snd_shoot_paint");
+        }
     }
 }
