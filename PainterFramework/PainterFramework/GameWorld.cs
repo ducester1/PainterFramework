@@ -13,6 +13,7 @@ namespace PainterFramework
         private RotatableSpriteGameObject cannonBarrel;
         private ThreeColorGameObject cannonColor;
         private ThreeColorGameObject paintCan1, paintCan2, paintCan3;
+        private Ball ball;
 
         public GameWorld()
         {
@@ -28,6 +29,8 @@ namespace PainterFramework
             paintCan2 = new PaintCan(575, Color.Green);
             paintCan3 = new PaintCan(700, Color.Blue);
 
+            ball = new Ball();
+
             this.Add(background);
             this.Add(cannonBarrel);
             this.Add(cannonColor);
@@ -35,6 +38,8 @@ namespace PainterFramework
             this.Add(paintCan1);
             this.Add(paintCan2);
             this.Add(paintCan3);
+
+            this.Add(ball);
         }
 
         public override void HandleInput(InputHelper inputHelper)
@@ -48,6 +53,11 @@ namespace PainterFramework
             double opposite = inputHelper.MousePosition.Y - cannonBarrel.GlobalPosition.Y;
             double adjacent = inputHelper.MousePosition.X - cannonBarrel.GlobalPosition.X;
             cannonBarrel.Angle = (float)Math.Atan2(opposite, adjacent);
+
+            if (inputHelper.MouseLeftButtonPressed() && !ball.Shooting)
+            {
+                ball.Shoot(inputHelper, cannonColor, cannonBarrel);
+            }
         }
 
         public bool isOutsideWorld(Vector2 position)
