@@ -17,13 +17,11 @@ namespace PainterFramework
     class Painter : GameEnvironment
     {
         GameWorld gameWorld;
-        SpriteGameObject background;
 
         public Painter()
         {
-            gameWorld = new GameWorld();
-            gameWorld.Add(background);
-            gameStateManager.AddGameState("playingState", gameWorld);
+            Content.RootDirectory = "Content";
+                       
             this.IsMouseVisible = true;
         }
 
@@ -31,7 +29,9 @@ namespace PainterFramework
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
+            base.LoadContent();
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            gameStateManager.AddGameState("playingState", new GameWorld());
             gameStateManager.SwitchTo("playingState");
 
             // TODO: use this.Content to load your game content here

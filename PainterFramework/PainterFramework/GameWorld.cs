@@ -7,6 +7,13 @@ namespace PainterFramework
 {
     class GameWorld : GameObjectList
     {
-        SpriteGameObject background;
+        private SpriteGameObject background;
+
+        public GameWorld()
+        {
+            background = new SpriteGameObject("spr_background");
+
+            this.Add(background);
+        }
     }
 }
