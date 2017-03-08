@@ -15,6 +15,8 @@ namespace PainterFramework
         private ThreeColorGameObject paintCan1, paintCan2, paintCan3;
         private Ball ball;
         private int maxLives = 5;
+        private TextGameObject scoreText;
+
         public int lives{ get; set; }
 
         public int score { get; set; }
@@ -35,6 +37,8 @@ namespace PainterFramework
 
             ball = new Ball();
 
+            scoreText = new TextGameObject("GameFont");
+
             this.Add(background);
             this.Add(cannonBarrel);
             this.Add(cannonColor);
@@ -45,8 +49,21 @@ namespace PainterFramework
 
             this.Add(ball);
 
-            this.score = 0;
+            this.Score = 0;
             this.lives = maxLives;
+
+            this.Add(scoreText);
+        }
+
+        public int Score
+        {
+            get { return score; }
+            set
+            {
+                score = value;
+                //if (scoreText != null)
+                    scoreText.Text = "Score: " + value;
+            }
         }
 
         public override void Update(GameTime gameTime)
@@ -91,7 +108,7 @@ namespace PainterFramework
 
         public bool isOutsideWorld(Vector2 position)
         {
-            return (position.X < 0 || position.X > Painter.Screen.X || position.Y < 0 || position.Y > Painter.Screen.Y);
+            return position.X < 0 || position.X > Painter.Screen.X || position.Y > Painter.Screen.Y;
         }
     }
 }

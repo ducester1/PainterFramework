@@ -35,10 +35,12 @@ namespace PainterFramework
             {
                 if (Color == targetColor)
                 {
-                    gameWorld.score += 10;
+                    gameWorld.Score += 10;
                     Painter.AssetManager.PlaySound("snd_collect_points");
                 }
                 else gameWorld.lives -= 1;
+
+                Reset();
             }
 
             minVertVelocity += 0.001f;
@@ -61,17 +63,9 @@ namespace PainterFramework
         {
             int RandomColor = GameEnvironment.Random.Next(0, 3);
 
-            switch (RandomColor)
-            {
-                case 1:
-                    return Color.Red;
-                case 2:
-                    return Color.Green;
-                case 3:
-                    return Color.Blue;
-                default:
-                    return Color.Red;
+            if(RandomColor == 1) return Color.Red;
+            else if(RandomColor == 2) return Color.Green;
+            else  return Color.Blue;
             }
         }
     }
-}

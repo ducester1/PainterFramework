@@ -18,10 +18,10 @@ namespace PainterFramework
 
         public override void Reset()
         {
+            base.Reset();
             Visible = false;
             velocity = Vector2.Zero;
             Shooting = false;
-            base.Reset();
         }
 
         public override void Update(GameTime gameTime)
