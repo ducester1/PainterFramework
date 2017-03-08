@@ -38,7 +38,7 @@ namespace PainterFramework
                     gameWorld.Score += 10;
                     Painter.AssetManager.PlaySound("snd_collect_points");
                 }
-                else gameWorld.lives -= 1;
+                else gameWorld.Lives -= 1;
 
                 Reset();
             }

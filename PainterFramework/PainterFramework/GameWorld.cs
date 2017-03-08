@@ -16,10 +16,9 @@ namespace PainterFramework
         private Ball ball;
         private int maxLives = 5;
         private TextGameObject scoreText;
-
-        public int lives{ get; set; }
-
-        public int score { get; set; }
+        private GameObjectList livesObjectList;
+        private GameObject newLive;
+        public int lives;
 
         public GameWorld()
         {
@@ -39,6 +38,15 @@ namespace PainterFramework
 
             scoreText = new TextGameObject("GameFont");
 
+            livesObjectList = new GameObjectList();
+
+            for (int i = 0; i < maxLives; i++)
+            {
+                newLive = new SpriteGameObject("spr_lives", 0, i.ToString());
+                newLive.Position = new Vector2(i * newLive.BoundingBox.Width, 30);
+                livesObjectList.Add(newLive);
+            }
+
             this.Add(background);
             this.Add(cannonBarrel);
             this.Add(cannonColor);
@@ -52,7 +60,28 @@ namespace PainterFramework
             this.Score = 0;
             this.lives = maxLives;
 
+
+            this.Add(livesObjectList);
+
             this.Add(scoreText);
+        }
+        public int score { get; set; }
+
+        public int Lives
+        {
+            get { return lives; }
+            set
+            {
+                if (value > maxLives) return;
+                for (int i = 0; i < maxLives; i++)
+                {
+                    SpriteGameObject sgo = (SpriteGameObject) livesObjectList.Find(i.ToString());
+                    sgo.Visible = (i < value);
+                }
+
+                lives = value;
+            }
+
         }
 
         public int Score
