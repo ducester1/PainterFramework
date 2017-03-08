@@ -13,6 +13,7 @@ namespace PainterFramework
         private RotatableSpriteGameObject cannonBarrel;
         private ThreeColorGameObject cannonColor;
         private ThreeColorGameObject paintCan1, paintCan2, paintCan3;
+        private SpriteGameObject scorebar;
         private Ball ball;
         private int maxLives = 5;
         private TextGameObject scoreText;
@@ -34,6 +35,8 @@ namespace PainterFramework
             paintCan2 = new PaintCan(575, Color.Green);
             paintCan3 = new PaintCan(700, Color.Blue);
 
+            scorebar = new SpriteGameObject("spr_scorebar");
+
             ball = new Ball();
 
             scoreText = new TextGameObject("GameFont");
@@ -43,7 +46,7 @@ namespace PainterFramework
             for (int i = 0; i < maxLives; i++)
             {
                 newLive = new SpriteGameObject("spr_lives", 0, i.ToString());
-                newLive.Position = new Vector2(i * newLive.BoundingBox.Width, 30);
+                newLive.Position = new Vector2(i * newLive.BoundingBox.Width, 50);
                 livesObjectList.Add(newLive);
             }
 
@@ -56,6 +59,8 @@ namespace PainterFramework
             this.Add(paintCan3);
 
             this.Add(ball);
+
+            this.Add(scorebar);
 
             this.Score = 0;
             this.lives = maxLives;
@@ -90,8 +95,9 @@ namespace PainterFramework
             set
             {
                 score = value;
-                //if (scoreText != null)
+                if (scoreText != null)
                     scoreText.Text = "Score: " + value;
+                scoreText.Position = new Vector2(10, 10);
             }
         }
 
