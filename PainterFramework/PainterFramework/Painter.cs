@@ -17,6 +17,8 @@ namespace PainterFramework
     class Painter : GameEnvironment
     {
         GameWorld gameWorld;
+        GameOver gameover;
+        
 
         public Painter()
         {
@@ -30,11 +32,14 @@ namespace PainterFramework
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             base.LoadContent();
+            screen = new Point(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             gameStateManager.AddGameState("playingState", new GameWorld());
+            gameStateManager.AddGameState("GameOverGameState", new GameOver());
             gameStateManager.SwitchTo("playingState");
+            //gameStateManager.SwitchTo("GameOverGameState");
 
-            screen = new Point(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+
 
             AssetManager.PlayMusic("snd_music");
 

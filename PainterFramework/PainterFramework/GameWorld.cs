@@ -85,6 +85,10 @@ namespace PainterFramework
                 }
 
                 lives = value;
+                if (lives < 1)
+                {
+                    Painter.GameStateManager.SwitchTo("GameOverGameState");
+                }
             }
 
         }
