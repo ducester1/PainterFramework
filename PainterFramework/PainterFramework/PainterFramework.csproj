@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ball.cs" />
+    <Compile Include="GameOver.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="PaintCan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
