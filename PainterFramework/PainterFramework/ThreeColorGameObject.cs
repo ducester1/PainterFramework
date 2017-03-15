@@ -21,7 +21,7 @@ namespace PainterFramework
                 Color = Color.Blue;
             }
 
-        public virtual void Reset()
+        public override void Reset()
         {
             base.Reset();
 
