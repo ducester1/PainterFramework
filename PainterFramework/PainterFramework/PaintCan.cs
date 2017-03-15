@@ -42,6 +42,9 @@ namespace PainterFramework
 
                 Reset();
             }
+            //swaying 
+            Angle = (float)Math.Sin(position.Y / 50.0f) * 0.1f;
+
 
             minVertVelocity += 0.001f;
             base.Update(gameTime);

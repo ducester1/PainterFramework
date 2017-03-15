@@ -85,9 +85,9 @@ namespace PainterFramework
                 }
 
                 lives = value;
-                if (lives < 1)
+                if (lives < 0)
                 {
-                    Painter.GameStateManager.SwitchTo("GameOverGameState");
+                    Painter.GameStateManager.SwitchTo("gameOverGameState");
                 }
             }
 
@@ -148,6 +148,19 @@ namespace PainterFramework
         public bool isOutsideWorld(Vector2 position)
         {
             return position.X < 0 || position.X > Painter.Screen.X || position.Y > Painter.Screen.Y;
+        }
+
+        public override void Reset()
+        {
+            
+            Score = 0;
+            Lives = maxLives;
+            ball.Reset();
+            paintCan1.Reset();
+            paintCan2.Reset();
+            paintCan3.Reset();
+            base.Reset();
+
         }
     }
 }

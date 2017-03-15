@@ -35,7 +35,7 @@ namespace PainterFramework
             screen = new Point(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             gameStateManager.AddGameState("playingState", new GameWorld());
-            gameStateManager.AddGameState("GameOverGameState", new GameOver());
+            gameStateManager.AddGameState("gameOverGameState", new GameOver());
             gameStateManager.SwitchTo("playingState");
             //gameStateManager.SwitchTo("GameOverGameState");
 
